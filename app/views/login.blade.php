@@ -11,16 +11,16 @@
     <div id="container">
       <div id="logo"> <!--img src="{{ asset('img/logo.png') }}" alt=""--> </div>
       <div id="loginbox">
-        <form id="loginform" action="index.html">
+        <form action="login" method="post">
           <p>Introduzca datos de autenticación.</p>
           <div class="input-group input-sm"> <span class="input-group-addon"><i
                 class="fa fa-user"></i></span><input class="form-control" id="username"
-              placeholder="Email" type="text"> </div>
+              placeholder="Email" type="email" name="username"> </div>
           <div class="input-group"> <span class="input-group-addon"><i class="fa fa-lock"></i></span><input
-              class="form-control" id="password" placeholder="Contraseña" type="password">
+              class="form-control" id="password" placeholder="Contraseña" type="password" name="password">
           </div>
           <div class="form-actions clearfix"> <input class="btn btn-block btn-primary btn-default"
-              value="Acceder" type="submit"> </div>
+              value="Acceder" type="submit" id="acceder" name="acceder"> </div>
           <div class="footer-login">
             <div class="pull-left text"></div>
           </div>

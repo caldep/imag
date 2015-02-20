@@ -15,3 +15,12 @@ Route::get('/', function()
 {
 	return View::make('login');
 });
+
+Route::get('/login2',array('before' =>'auth.basic', function()
+{
+    return View::make('hello');
+}));
+
+Route::post('login','UserLogin@autenticar');
+
+
