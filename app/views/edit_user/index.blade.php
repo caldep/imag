@@ -102,31 +102,17 @@
             <label for="exampleInputEmail1">Fecha de Nacimiento</label>
             <input type="text" class="form-control datepicker" id="calendar" placeholder="Fecha de Cumpleaños" name="birthday_edit" value="{{ date("d/m/Y",strtotime(Session::get('birthday'))) }}">
         </div>
-        <div class="form-group">
+        <!--div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="password_edit">
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Repita la Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="password2_edit">
-        </div>
-        <input type="hidden" name="user_id" value="{{ Session::get('user_id') }}">
-        <!--div class="form-group">
-            <label for="exampleInputPassword1">Nivel de Usuario</label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="level" id="optionsRadios1" value="1" checked>
-                Administrador
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="level" id="optionsRadios2" value="0">
-                Usuario
-            </label>
         </div-->
 
+
+        <input type="hidden" name="user_id" value="{{ Session::get('user_id') }}">
 
 
 
