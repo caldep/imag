@@ -17,7 +17,10 @@ class UserLogin extends BaseController {
 
         if(Auth::attempt($userdata))
         {
-            return View::make('hello');
+            $list_users = DB::table('users')->get();
+
+            return Redirect::to('ls_users')->with('list_users', $list_users);
+
         }
         else
         {

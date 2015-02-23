@@ -10,17 +10,37 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
+//Enruta en el directorio raíz
 Route::get('/', function()
 {
 	return View::make('login');
 });
-
-Route::get('/login2',array('before' =>'auth.basic', function()
+//Enruta a la pagina de autenticacion
+Route::get('/login',function()
 {
-    return View::make('hello');
-}));
+    return View::make('login');
+});
 
+//Envía los datos del formulario al controlador
 Route::post('login','UserLogin@autenticar');
 
+//Enruta al listado de usuarios
+Route::controller('ls_users','UserController');
+
+//agregar usuario
+Route::controller('add_user','AddUserController');
+
+Route::controller('users','UsersController');
+
+Route::get('/edit_user',function()
+{
+    return View::make('edit_user.index');
+});
+
+//cerrar sesion
+Route::get('logout',function()
+{
+    Auth::logout();
+    return Redirect::to('/');
+});
 

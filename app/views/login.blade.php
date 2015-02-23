@@ -12,7 +12,12 @@
       <div id="logo"> <!--img src="{{ asset('img/logo.png') }}" alt=""--> </div>
       <div id="loginbox">
         <form action="login" method="post">
-          <p>Introduzca datos de autenticación.</p>
+            @if(Session::has('login_errors'))
+                <p style="color:#FB1D1D">Email o contraseña incorrecta.</p>
+            @else
+                <p>Introduzca datos de autenticación.</p>
+            @endif
+
           <div class="input-group input-sm"> <span class="input-group-addon"><i
                 class="fa fa-user"></i></span><input class="form-control" id="username"
               placeholder="Email" type="email" name="username"> </div>
