@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'pruebamail119@gmail.com', 'name' => 'Prueba Mail'),
+	'from' => array('address' => 'pruebamail119@gmail.com', 'name' => 'Imaginamos - Prueba Mail'),
 
 	/*
 	|--------------------------------------------------------------------------

@@ -11,9 +11,7 @@ class UsersController extends BaseController {
     public function getIndex()
     {
 
-        $list_users = DB::table('users')->get();
-
-        return View::make('list_users.index')->with('list_users', $list_users);
+        return $this->showList();
 
 
     }
@@ -55,7 +53,25 @@ class UsersController extends BaseController {
 
         $user->save();
 
-        //redirigimos a usurios
+        //se empaquetan los datos para enviar correo
+        $data = array(
+            'name'      => $user->name,
+            'last_name' => $user->last_name,
+            'birthday'  => Input::get('birthday'),
+            'phone'     => $user->phone
+        );
+
+        $to_email = $user->email;
+        //se agrega el email a la cola de envío
+        Mail::queue('emails.registro', $data, function($message) use ($to_email)
+        {
+            $message->subject('Confirmación de su registro');
+            //se envía con copia a caldep
+            $message->to($to_email)->cc('caldep@gmail.com');
+
+        });
+
+        //redirigimos a usuarios
         return Redirect::to('ls_users')->with('status', 'ok_create');
     }
 
@@ -90,6 +106,14 @@ class UsersController extends BaseController {
 
         $user->save();
         return Redirect::to('users')->with('status', 'ok_update');
+
+    }
+
+    public function showList()
+    {
+        $list_users = DB::table('users')->get();
+
+        return View::make('list_users.index')->with('list_users', $list_users);
 
     }
 }
