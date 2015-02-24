@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration {
             $table->bigInteger('phone');
             $table->date('birthday');
             $table->string('password');
+            $table->integer('photo_id')->unsigned();
             $table->string('remember_token');
             $table->timestamps();
 		});
@@ -28,7 +29,8 @@ class CreateUsersTable extends Migration {
         Schema::create('photos', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->binary('photo');
+            $table->string('real_name');
+            $table->string('path_name');
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

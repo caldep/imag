@@ -80,7 +80,7 @@
 <div class="content">
 
 
-    <form role="form" action="users/create" method="post">
+    <form role="form" action="users/create" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="exampleInputEmail1">Nombre</label>
             <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Nombre" name="name">
@@ -108,6 +108,10 @@
         <div class="form-group">
             <label for="exampleInputPassword1">Repita la Contraseña</label>
             <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="password2">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputFile">Imágen Perfil del Usuario</label>
+            <input type="file" class="form-control" id="exampleInputFile" placeholder="Imagen del usuario" name="avatar">
         </div>
 
         <!--div class="form-group">

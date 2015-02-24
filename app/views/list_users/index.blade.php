@@ -137,7 +137,8 @@ $(document).ready (function () {
         <table class="table table-first-column-number data-table display full">
           <thead>
 		<tr>
-	        <th>Nombre</th>
+            <th>Avatar</th>
+            <th>Nombre</th>
             <th>Apellido</th>
             <th>Email</th>
             <th>Teléfono</th>
@@ -152,6 +153,13 @@ $(document).ready (function () {
             <tr>
 @if($list_users)
 @foreach($list_users as $user)
+    <td>
+        @if(is_null($user->path_name))
+            <img src="uploads/avatars/sin_imagen.jpg" height="32" width="32"/>
+        @else
+            <img src="uploads/avatars/{{$user->path_name}}" height="32" width="32"/>
+        @endif
+    </td>
     <td>{{ $user->name }}</td>
     <td>{{ $user->last_name }}</td>
     <td>{{ $user->email }}</td>

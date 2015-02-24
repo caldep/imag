@@ -25,10 +25,12 @@ Route::get('/login',function()
 Route::post('login','UserLogin@autenticar');
 
 //Enruta al listado de usuarios
-Route::controller('ls_users','UserController');
+Route::controller('ls_users','UsersController');
 
 //agregar usuario
 Route::controller('add_user','AddUserController');
+
+
 
 Route::controller('users','UsersController');
 
