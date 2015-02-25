@@ -6,7 +6,7 @@
  * Time: 09:47 AM
  */
 
-class UserLogin extends BaseController {
+class UserLoginController extends BaseController {
 
     public function autenticar()
     {

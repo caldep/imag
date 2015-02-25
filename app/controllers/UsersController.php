@@ -7,7 +7,6 @@ class UsersController extends BaseController {
         $this->beforeFilter('auth');
     }
 
-
     public function getIndex()
     {
 
@@ -63,7 +62,7 @@ class UsersController extends BaseController {
             {
                 $photo = new Photo;
                 $photo->real_name = $file->getClientOriginalName();
-                $photo->path_name = md5($file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
+                $photo->path_name = md5($file->getClientOriginalName()).time().'.'.$file->getClientOriginalExtension();
                 $photo->user_id = $user->id;
                 Image::make($file)->resize(300, 300)->save('uploads/avatars/'.$photo->path_name);
                 $photo->save();
@@ -71,9 +70,6 @@ class UsersController extends BaseController {
                 DB::table('users')
                     ->where('id', $user->id)
                     ->update(array('photo_id' => $photo->id));
-
-
-
 
                 //se empaquetan los datos para enviar correo
                 $data = array(
@@ -83,15 +79,9 @@ class UsersController extends BaseController {
                     'phone'     => $user->phone
                 );
 
-                $to_email = $user->email;
-                //se agrega el email a la cola de envío
-                Mail::queue('emails.registro', $data, function($message) use ($to_email)
-                {
-                    $message->subject('Confirmación de su registro');
-                    //se envía con copia a caldep
-                    $message->to($to_email)->cc('caldep@gmail.com');
+                $email = new EmailController();
+                $email->sendEmail('emails.registro', $data, $user->email,'Confirmación de su registro','caldep@gmail.com');
 
-                });
 
                 //redirigimos a usuarios
                 return Redirect::to('ls_users')->with('status', 'ok_create');

@@ -22,7 +22,7 @@ Route::get('/login',function()
 });
 
 //Envía los datos del formulario al controlador
-Route::post('login','UserLogin@autenticar');
+Route::post('login','UserLoginController@autenticar');
 
 //Enruta al listado de usuarios
 Route::controller('ls_users','UsersController');
