@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Imaginamos - Agregar Usuario</title>
+    <title>Imaginamos - Editar Usuario</title>
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -76,8 +76,19 @@
     </div><!--/.navbar-collapse -->
 </div>
 
+<div id="sidebar-nav" class="hidden-xs">
 
+    <ul id="dashboard-menu" class="nav nav-list">
+        <a href="edit_img">
+            @if(is_null(Session::get('path_name')))
+                <img src="uploads/avatars/sin_imagen.jpg" height="200" width="200" title="Pulse para cambiar imágen"/>
+            @else
+                <img src="uploads/avatars/{{Session::get('path_name')}}" height="200" width="200" title="Pulse para cambiar imágen"/>
+            @endif
 
+        </a>
+</ul>
+        </div>
 <div class="content">
 
 
@@ -102,23 +113,8 @@
             <label for="exampleInputEmail1">Fecha de Nacimiento</label>
             <input type="text" class="form-control datepicker" id="calendar" placeholder="Fecha de Cumpleaños" name="birthday_edit" value="{{ date("d/m/Y",strtotime(Session::get('birthday'))) }}">
         </div>
-        <!--div class="form-group">
-            <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="password_edit">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputPassword1">Repita la Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña" name="password2_edit">
-        </div-->
-
 
         <input type="hidden" name="user_id" value="{{ Session::get('user_id') }}">
-
-
-
-
-
-
 
         <div class="modal-footer">
             <a href="ls_users"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></a>
@@ -134,40 +130,7 @@
 
 
 <input id="val" type="hidden" name="user" class="input-block-level" value="" >
-<script>
-    /*$(document).ready(function() {
 
-        <?php echo "var id=".Session::get('status').";"; ?>
-
-
-            $('[name=user]').val(id);
-
-            var faction = "<?php echo URL::to('user/getuser/data'); ?>";
-
-            var fdata = $('#val').serialize();
-            $('#load').show();
-            $.post(faction, fdata, function(json) {
-                if (json.success) {
-                    $('#formEdit input[name="user_id"]').val(json.id);
-                    $('#formEdit input[name="name_edit"]').val(json.name);
-                    $('#formEdit input[name="last_name_edit"]').val(json.last_name);
-                    $('#formEdit input[name="email_edit"]').val(json.email);
-                    $('#formEdit input[name="birthday_edit"]').val(json.birthday);
-                    $('#formEdit input[name="phone_edit"]').val(json.phone);
-
-
-                    $('#load').hide();
-
-                } else {
-                    $('#errorMessage').html(json.message);
-                    $('#errorMessage').show();
-                }
-            });
-
-
-
-    });*/
-</script>
 </body>
 </html>
 

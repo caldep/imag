@@ -127,20 +127,34 @@ class UsersController extends BaseController {
 
     public function getUpdate($user_id)
     {
-        $user = User::find($user_id);
-        return Redirect::to('edit_user')->with('user_id', $user->id)->with('name', $user->name)->with('last_name', $user->last_name)->with('email', $user->email)->with('birthday', $user->birthday)->with('phone', $user->phone);
+        //$user = User::find($user_id);
+        $user = DB::table('users')
+                ->leftJoin('photos', 'users.photo_id', '=', 'photos.id')
+                ->select('users.*', 'photos.path_name')
+                ->where('users.id','=',$user_id)
+                ->get();
+
+        return Redirect::to('edit_user')
+                    ->with('user_id',   $user[0]->id)
+                    ->with('name',      $user[0]->name)
+                    ->with('last_name', $user[0]->last_name)
+                    ->with('email',     $user[0]->email)
+                    ->with('birthday',  $user[0]->birthday)
+                    ->with('phone',     $user[0]->phone)
+                    ->with('photo_id',  $user[0]->photo_id)
+                    ->with('path_name', $user[0]->path_name);
     }
     //controlador para actualizar datos del usurio
     public function postUpdate()
     {
-        $user_id = Input::get('user_id');
-        $user = User::find($user_id);
+        $user_id            = Input::get('user_id');
+        $user               = User::find($user_id);
 
-        $user->name = Input::get('name_edit');
-        $user->last_name = Input::get('last_name_edit');
-        $user->email = Input::get('email_edit');
-        $user->birthday = date("Y-m-d",strtotime(Input::get('birthday_edit')));
-        $user->phone = Input::get('phone_edit');
+        $user->name         = Input::get('name_edit');
+        $user->last_name    = Input::get('last_name_edit');
+        $user->email        = Input::get('email_edit');
+        $user->birthday     = date("Y-m-d",strtotime(Input::get('birthday_edit')));
+        $user->phone        = Input::get('phone_edit');
 
 
         $user->save();
@@ -150,7 +164,6 @@ class UsersController extends BaseController {
 
     public function showList()
     {
-        //$list_users     = DB::table('users')->get();
         $list_users = DB::table('users')
                         ->leftJoin('photos', 'users.photo_id', '=', 'photos.id')
                         ->select('users.*', 'photos.path_name')

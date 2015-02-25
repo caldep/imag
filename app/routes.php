@@ -39,6 +39,12 @@ Route::get('/edit_user',function()
     return View::make('edit_user.index');
 });
 
+Route::get('/edit_img',function()
+{
+    return View::make('edit_img.index');
+});
+
+
 //cerrar sesion
 Route::get('logout',function()
 {

@@ -114,29 +114,6 @@
             <input type="file" class="form-control" id="exampleInputFile" placeholder="Imagen del usuario" name="avatar">
         </div>
 
-        <!--div class="form-group">
-            <label for="exampleInputPassword1">Nivel de Usuario</label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="level" id="optionsRadios1" value="1" checked>
-                Administrador
-            </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="level" id="optionsRadios2" value="0">
-                Usuario
-            </label>
-        </div-->
-
-
-
-
-
-
-
-
         <div class="modal-footer">
             <a href="ls_users"><button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button></a>
             <button type="submit" class="btn btn-inverse">Guardar</button>
@@ -144,80 +121,6 @@
 </div>
 
 
-
-
-
-<!-- Modal edit-->
-<!--div class="modal fade" id="Edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel"><i class="fa fa-plus-square"></i> Editar Usuario <span id="load"> <img src="{{ asset('img/loading-icons/loading1.gif')}}"> Cargando...</span></h4>
-      </div>
-      <div class="modal-body">
-
-
-<form role="form" action="users/update" method="post" id="formEdit">
-  <div class="form-group">
-    <label for="exampleInputEmail1">Nombre</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el Nombre" name="name_edit">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Apellido</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el Apellido" name="last_name_edit">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el Email" name="email_edit">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Dirección</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese la Dirección" name="address_edit">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Teléfono</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese el Teléfono" name="phone_edit">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Nombre de Usuario</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Ingrese nombre de usuario" name="username_edit">
-  </div>
-
-
-  <div class="form-group">
-    <label for="exampleInputPassword1">Nivel de Usuario</label>
-  </div>
-  <div class="radio">
-  <label>
-    <input type="radio" name="level" id="level_ad" value="1">
-    Administrador
-  </label>
-</div>
-<div class="radio">
-  <label>
-    <input type="radio" name="level" id="level_us" value="0">
-    Usuario
-  </label>
-</div>
-  <input type="hidden" name="user_id" >
-
-
-
-
-
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-       <button type="submit" class="btn btn-inverse">Guardar</button>
-
-       </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Modal -->
 
 
 
